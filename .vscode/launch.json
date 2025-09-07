@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Local",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "",
+      "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.API",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      }
+    },
+    {
+      "name": "Debug Dev",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "",
+      "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.API",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Dev"
+      }
+    },
+    {
+      "name": "Debug UAT",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "",
+      "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.API",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "UAT"
+      }
+    },
+    {
+      "name": "Debug Prod",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "",
+      "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.API",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Prod"
+      }
+    }
+  ]
+}
