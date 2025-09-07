@@ -23,7 +23,8 @@
         "CoreApi.Entity/**",
         "CoreApi.Repository/**",
         "CoreApi.Services/**",
-        "CoreApi.Test/**"
+        "CoreApi.Test/**",
+        ".vscode/launch.json"
       ],
       "exclude": [
         "**/bin/**",
