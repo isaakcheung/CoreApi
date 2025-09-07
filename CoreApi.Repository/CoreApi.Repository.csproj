@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreApi.Entity\CoreApi.Entity.csproj" />
+    <ProjectReference Include="..\CoreApi.Common\CoreApi.Common.csproj" />
+  </ItemGroup>
+</Project>

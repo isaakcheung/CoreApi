@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "WebAPI", "DDD", "Clean Architecture", "EF Core" ],
+  "identity": "IsaakCheung.CoreApi.Solution",
+  "name": "CoreApi Solution Template",
+  "shortName": "CoreApiSln",
+  "sourceName": "CoreApi",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000001" ],
+  "description": "ASP.NET Core API DDD 分層架構方案，含 API、Common、Entity、Repository、Services、Test 專案，支援多環境組態與 EF Core。",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "CoreApi.sln",
+        "CoreApi.API/**",
+        "CoreApi.Common/**",
+        "CoreApi.Entity/**",
+        "CoreApi.Repository/**",
+        "CoreApi.Services/**",
+        "CoreApi.Test/**"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.sln" }
+  ],
+  "symbols": {
+    "solutionName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi",
+      "defaultValue": "CoreApi",
+      "description": "方案名稱"
+    }
+  }
+}
