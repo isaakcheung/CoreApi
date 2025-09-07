@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using CoreApi.Common.Enums;
 using CoreApi.Common.Models;
@@ -56,7 +57,7 @@ namespace CoreApi.Common.Helpers
                 Status = statusCode.ToString() ?? string.Empty,
                 StatusCode = statusCode,
                 Message = message ?? statusCode.GetDisplayName() ?? string.Empty,
-                Data = default(TResult?),
+                Data = default!,
                 Exception = exception
             };
         }
@@ -135,7 +136,7 @@ namespace CoreApi.Common.Helpers
                 Status = finalStatus.ToString(),
                 StatusCode = finalStatus,
                 Message = message ?? finalStatus.GetDisplayName() ?? string.Empty,
-                Data = default(TResult?),
+                Data = default!,
                 Exception = exception
             };
         }

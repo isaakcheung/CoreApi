@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using CoreApi.Common;
+using System.IdentityModel.Tokens.Jwt;
 
 using CoreApi.Common.Interfaces;
 
@@ -80,7 +81,7 @@ namespace CoreApi.Common.Helpers
         {
             var principal = context.Principal;
             var identity = principal?.Identity as ClaimsIdentity;
-            var token = context.SecurityToken as System.IdentityModel.Tokens.Jwt.JwtSecurityToken;
+            var token = context.SecurityToken as JwtSecurityToken;
             if (identity != null && token != null)
             {
                 // 取出 sub claim
@@ -118,7 +119,7 @@ namespace CoreApi.Common.Helpers
             var key = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(signKey));
             var creds = new Microsoft.IdentityModel.Tokens.SigningCredentials(key, Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256);
 
-            var token = new System.IdentityModel.Tokens.Jwt.JwtSecurityToken(
+            var token = new JwtSecurityToken(
                 issuer: issuer,
                 audience: audience,
                 claims: claims,
@@ -126,7 +127,7 @@ namespace CoreApi.Common.Helpers
                 signingCredentials: creds
             );
 
-            return new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler().WriteToken(token);
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
         /// <summary>
         /// 提供 JwtBearerOptions 設定的 Action，統一搬移 Jwt 驗證參數

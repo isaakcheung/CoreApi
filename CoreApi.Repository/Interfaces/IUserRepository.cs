@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace CoreApi.Repository.Interfaces
         /// </summary>
         /// <param name="keyword">查詢關鍵字</param>
         /// <returns>分頁的使用者資料集合</returns>
-        Task<PageList<UserEntity>> GetUserByKeywordAsync(string keyword);
+        Task<PageList<UserEntity>> GetUserByKeywordAsync(string? keyword = null, int? skip = null, int? take = null);
 
         /// <summary>
         /// 依唯一識別碼取得使用者資料

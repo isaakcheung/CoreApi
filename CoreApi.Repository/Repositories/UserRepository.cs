@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using CoreApi.Entity.Entities;
 using CoreApi.Common.Models;
 using CoreApi.Common.Helpers;
 
-namespace CoreApi.Repository
+namespace CoreApi.Repository.Repositories
 {
     /// <summary>
     /// 使用者資料存取層
@@ -34,11 +35,6 @@ namespace CoreApi.Repository
         }
 
         /// <summary>
-        /// 依唯一識別碼取得使用者資料
-        /// </summary>
-        /// <param name="id">使用者唯一識別碼</param>
-        /// <returns>使用者資料物件</returns>
-        /// <summary>
         /// 依唯一識別碼取得使用者資料。
         /// </summary>
         /// <param name="id">使用者唯一識別碼</param>
@@ -46,7 +42,7 @@ namespace CoreApi.Repository
         public async Task<UserEntity> GetByIdAsync(Guid id)
         {
             // 使用唯讀DbContext查詢
-            return await _readOnlyDbContext.Users.FindAsync(id);
+            return await _readOnlyDbContext.Users.FindAsync(id) ?? null;
         }
 
         /// <summary>
@@ -97,13 +93,20 @@ namespace CoreApi.Repository
         /// </summary>
         /// <param name="keyword">查詢關鍵字</param>
         /// <returns>分頁的 UserEntity 清單</returns>
-        public async Task<PageList<UserEntity>> GetUserByKeywordAsync(string keyword)
+        public async Task<PageList<UserEntity>> GetUserByKeywordAsync(string? keyword = null, int? skip = null, int? take = null)
         {
-            // 使用唯讀DbContext查詢
-            var query = _readOnlyDbContext.Users
-                .Where(u => u.Name.Contains(keyword) || u.Email.Contains(keyword));
+            var query = _readOnlyDbContext.Users.AsQueryable();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(u => u.Name.Contains(keyword) || u.Email.Contains(keyword));
+            }
+            var totalCount = await query.CountAsync();
+            if (skip.HasValue)
+                query = query.Skip(skip.Value);
+            if (take.HasValue)
+                query = query.Take(take.Value);
             var list = await query.ToListAsync();
-            return new PageList<UserEntity>(list, list.Count);
+            return new PageList<UserEntity>(list, totalCount);
         }
     }
 }

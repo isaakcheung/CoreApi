@@ -39,7 +39,9 @@ namespace CoreApi.API.Controllers
         /// 取得指定使用者資料
         /// </summary>
         /// <param name="id">使用者唯一識別碼</param>
-        /// <returns>使用者資料物件，若無則回傳 404</returns>
+        /// <returns>
+        /// 回傳標準 ApiResult，Data 欄位為 <see cref="UserDto"/>，包含指定使用者詳細資料。
+        /// </returns>
         public async Task<IProcessResult> GetUser(Guid id)
         {
             var result = await _userService.GetUser(id);
@@ -52,10 +54,15 @@ namespace CoreApi.API.Controllers
         /// 依關鍵字查詢使用者資料
         /// </summary>
         /// <param name="keyword">查詢關鍵字</param>
-        /// <returns>符合條件的使用者資料集合</returns>
-        public async Task<IProcessResult> GetUserByKeyword([FromQuery] string keyword, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 10)
+        /// <returns>
+        /// 回傳標準 ApiResult，Data 欄位為 <see cref="List{UserDto}"/>，包含符合關鍵字的使用者清單。
+        /// </returns>
+        public async Task<IProcessResult> GetUserByKeyword(
+            [FromQuery] string? keyword = null,
+            [FromQuery] int? skip = null,
+            [FromQuery] int? take = null)
         {
-            var result = await _userService.GetUserByKeyword(keyword);
+            var result = await _userService.GetUserByKeyword(keyword, skip, take);
             return result;
         }
 
@@ -64,7 +71,9 @@ namespace CoreApi.API.Controllers
         /// 新增使用者資料
         /// </summary>
         /// <param name="user">使用者資料物件</param>
-        /// <returns>建立成功回傳 201，並回傳新資料</returns>
+        /// <returns>
+        /// 回傳標準 ApiResult，Data 欄位為 <see cref="UserDto"/>，包含新增後的使用者資料。
+        /// </returns>
         public async Task<IProcessResult> CreateUser([FromBody] UserDto user)
         {
             var result = await _userService.CreateUser(user);
@@ -78,11 +87,13 @@ namespace CoreApi.API.Controllers
         /// </summary>
         /// <param name="id">使用者唯一識別碼</param>
         /// <param name="user">使用者資料物件</param>
-        /// <returns>成功回傳 204，失敗回傳 400</returns>
+        /// <returns>
+        /// 回傳標準 ApiResult，Data 欄位為 <see cref="UserDto"/>，包含更新後的使用者資料。
+        /// </returns>
         public async Task<IProcessResult> UpdateUser(Guid id, [FromBody] UserDto user)
         {
-            var result2 = await _userService.UpdateUser(user);
-            return result2;
+            var result = await _userService.UpdateUser(user);
+            return result;
         }
 
         [HttpDelete("{id}")]
@@ -91,7 +102,9 @@ namespace CoreApi.API.Controllers
         /// 刪除指定使用者資料
         /// </summary>
         /// <param name="id">使用者唯一識別碼</param>
-        /// <returns>成功回傳 204</returns>
+        /// <returns>
+        /// 回傳標準 ApiResult，Data 欄位為 <see cref="bool"/>，true 表示刪除成功。
+        /// </returns>
         public async Task<IProcessResult> DeleteUser(Guid id)
         {
             var result = await _userService.DeleteUser(id);
@@ -104,25 +117,12 @@ namespace CoreApi.API.Controllers
         /// 取得指定使用者的 JWT Token
         /// </summary>
         /// <param name="id">使用者唯一識別碼</param>
-        /// <returns>JWT Token</returns>
-        public async Task<ApiResult> GetUserTokenById(Guid id)
+        /// <returns>
+        /// 回傳標準 ApiResult，Data 欄位為 JWT Token 字串，代表指定使用者的存取權杖。
+        /// </returns>
+        public async Task<IProcessResult> GetUserTokenById(Guid id)
         {
-            try
-            {
-                var token = await _userService.GenerateJwtTokenAsync(id);
-                return new ApiResult
-                {
-                    IsSuccess = true,
-                    StatusCode = 200,
-                    Status = "Success",
-                    Message = "Token 產生成功",
-                    Data = token
-                };
-            }
-            catch (Exception ex)
-            {
-                return ApiResultFactory.FromException(ex);
-            }
+            return await _userService.GetUserTokenById(id);
         }
     }
 }

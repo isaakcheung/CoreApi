@@ -1,15 +1,11 @@
+#nullable enable
 using System;
 using CoreApi.Entity.Entities;
 
 namespace CoreApi.Service.Models
 {
     /// <summary>
-    /// 使用者資料傳輸物件 (DTO)
-    /// 層級：應用層/邏輯層
-    /// 用途：用於 API、Service、Repository 間交換使用者資料，隔離 Entity 結構，強化資料安全與維護性。
-    /// </summary>
-    /// <summary>
-    /// 對應應用層的使用者資料傳輸物件（DTO）。
+    /// 使用者資料傳輸物件 (DTO)，用於 API、Service、Repository 間交換使用者資料，隔離 Entity 結構，強化資料安全與維護性。
     /// </summary>
     public class UserDto
     {
@@ -18,11 +14,11 @@ namespace CoreApi.Service.Models
         /// <summary>使用者唯一識別碼</summary>
         public Guid? Id { get; set; }
         /// <summary>使用者名稱</summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
         /// <summary>電子郵件</summary>
-        public string Email { get; set; }
+        public string? Email { get; set; }
         /// <summary>密碼雜湊值</summary>
-        public string PasswordHash { get; set; }
+        public string? PasswordHash { get; set; }
         /// <summary>建立者代號</summary>
         public Guid? CreateBy { get; set; }
         /// <summary>建立時間</summary>
@@ -58,15 +54,7 @@ namespace CoreApi.Service.Models
         }
 
         /// <summary>
-        /// 轉型為 UserEntity 物件
-        /// </summary>
-        /// <returns>對應的 UserEntity 物件</returns>
-        /// <summary>
-        /// 轉型為 UserEntity 物件（供資料存取層使用）。
-        /// </summary>
-        /// <returns>UserEntity 物件</returns>
-        /// <summary>
-        /// 轉型為 UserEntity 物件，可選擇性傳入現有 UserEntity 進行更新
+        /// 轉型為 UserEntity 物件，可選擇性傳入現有 UserEntity 進行更新（供資料存取層使用）。
         /// </summary>
         /// <param name="entity">可選擇性傳入現有 UserEntity</param>
         /// <returns>對應的 UserEntity 物件</returns>

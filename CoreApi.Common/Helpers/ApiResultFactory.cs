@@ -1,5 +1,6 @@
 using System;
 using CoreApi.Common.Models;
+using CoreApi.Common.Helpers;
 
 namespace CoreApi.Common.Helpers
 {
@@ -65,7 +66,7 @@ namespace CoreApi.Common.Helpers
         /// </summary>
         public static ApiResult FromException(Exception ex)
         {
-            var failResult = CoreApi.Common.Helpers.GeneralProcessResultFactory.Fail(
+            var failResult = GeneralProcessResultFactory.Fail(
                 exception: ex ,
                 message: ex.Message
             );

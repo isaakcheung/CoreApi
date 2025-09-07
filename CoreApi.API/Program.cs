@@ -1,13 +1,16 @@
 // Serilog 結構化日誌設定
 using Serilog;
 using CoreApi.Service;
-using CoreApi.Common;
-using CoreApi.Entity;
 using CoreApi.Service.Interfaces;
+using CoreApi.Common;
 using CoreApi.Common.Interfaces;
 using CoreApi.Common.Helpers;
+using CoreApi.Repository.Interfaces;
+using CoreApi.Repository;
 using Microsoft.EntityFrameworkCore;
+using CoreApi.Entity.Entities;
 using CoreApi.Common.Middlewares;
+using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((ctx, lc) => lc
@@ -26,33 +29,32 @@ builder.Services.AddAuthorization();
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<SqlConnectionHelper>();
 builder.Services.AddScoped<IUserInfoHelper, UserInfoHelper>();
-builder.Services.AddScoped<CoreApi.Repository.Interfaces.IUserRepository, CoreApi.Repository.UserRepository>();
 
-builder.Services.AddDbContext<CoreApi.Entity.Entities.ReadWriteCoreApiDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString(CoreApi.Common.Constants.DbConnectionKeys.ReadWriteConnection)));
-builder.Services.AddDbContext<CoreApi.Entity.Entities.ReadOnlyCoreApiDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString(CoreApi.Common.Constants.DbConnectionKeys.ReadOnlyConnection)));
+builder.Services.AddDbContext<ReadWriteCoreApiDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString(Constants.DbConnectionKeys.ReadWriteConnection)));
+builder.Services.AddDbContext<ReadOnlyCoreApiDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString(Constants.DbConnectionKeys.ReadOnlyConnection)));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
         BearerFormat = "JWT",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        In = ParameterLocation.Header,
         Description = "請於此處輸入 JWT Bearer Token，格式為：Bearer {token}"
     });
-    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            new OpenApiSecurityScheme
             {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                Reference = new OpenApiReference
                 {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Type = ReferenceType.SecurityScheme,
                     Id = "Bearer"
                 }
             },
@@ -63,7 +65,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers(options =>
 {
-    options.Filters.Add<CoreApi.Common.Helpers.ProcessResultFilter>();
+    options.Filters.Add<ProcessResultFilter>();
 });
 
 var app = builder.Build();
@@ -73,7 +75,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-app.UseMiddleware<CoreApi.Common.Middlewares.ProcessResultExceptionHandler>();
+app.UseMiddleware<ProcessResultExceptionMiddlewares>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

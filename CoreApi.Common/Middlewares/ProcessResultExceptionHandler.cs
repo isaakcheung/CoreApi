@@ -11,11 +11,11 @@ namespace CoreApi.Common.Middlewares
     /// <summary>
     /// 全域例外處理中介層
     /// </summary>
-    public class ProcessResultExceptionHandler
+    public class ProcessResultExceptionMiddlewares
     {
         private readonly RequestDelegate _next;
 
-        public ProcessResultExceptionHandler(RequestDelegate next)
+        public ProcessResultExceptionMiddlewares(RequestDelegate next)
         {
             _next = next;
         }
