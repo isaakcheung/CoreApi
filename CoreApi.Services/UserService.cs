@@ -1,4 +1,5 @@
 #nullable enable
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace CoreApi.Service
         private IUserRepository _userRepository => _serviceProvider.GetRequiredService<IUserRepository>();
         private IConfiguration _configuration => _serviceProvider.GetRequiredService<IConfiguration>();
         private IUserInfoHelper _userInfoHelper => _serviceProvider.GetRequiredService<IUserInfoHelper>();
+        private Microsoft.Extensions.Logging.ILogger<UserService> _logger => _serviceProvider.GetRequiredService<Microsoft.Extensions.Logging.ILogger<UserService>>();
 
         public UserService(IServiceProvider serviceProvider)
         {
@@ -50,6 +52,7 @@ namespace CoreApi.Service
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "GetUser 發生例外，id={Id}", id);
                 return GeneralProcessResultFactory.Fail(exception: ex);
             }
         }
@@ -68,6 +71,7 @@ namespace CoreApi.Service
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "GetUserByKeyword 發生例外，keyword={Keyword}, skip={Skip}, take={Take}", keyword, skip, take);
                 return GeneralProcessResultFactory.Fail(exception: ex);
             }
         }
@@ -88,6 +92,7 @@ namespace CoreApi.Service
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "CreateUser 發生例外，user={User}", user);
                 return GeneralProcessResultFactory.Fail(exception: ex);
             }
         }
@@ -115,6 +120,7 @@ namespace CoreApi.Service
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "UpdateUser 發生例外，user={User}", user);
                 return GeneralProcessResultFactory.Fail(exception: ex);
             }
         }
@@ -139,6 +145,7 @@ namespace CoreApi.Service
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "DeleteUser 發生例外，id={Id}", id);
                 return GeneralProcessResultFactory.Fail(exception: ex);
             }
         }
@@ -180,7 +187,8 @@ namespace CoreApi.Service
             }
             catch (Exception ex)
             {
-                return GeneralProcessResultFactory.Fail(exception: ex);
+                _logger.LogError(ex, "GetUserTokenById 發生例外，userId={UserId}", userId);
+                return GeneralProcessResultFactory.Fail<string>(exception: ex);
             }
         }
 

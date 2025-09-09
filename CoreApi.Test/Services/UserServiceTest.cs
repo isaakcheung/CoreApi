@@ -11,23 +11,19 @@ using CoreApi.Repository.Interfaces;
 using CoreApi.Common.Interfaces;
 using CoreApi.Entity.Entities;
 using CoreApi.Common.Models;
+using CoreApi.Common.Enums;
+using CoreApi.Test.BaseTests;
+
 
 namespace CoreApi.Test.Services
 {
-    public class UserServiceTest
+    public class UserServiceTest : BaseDependencyInjectionTest
     {
-        private readonly Mock<IUserRepository> _userRepoMock = new();
-        private readonly Mock<IUserInfoHelper> _userInfoHelperMock = new();
-        private readonly Mock<IConfiguration> _configMock = new();
-        private readonly IServiceProvider _serviceProvider;
+        // mock 欄位已由 BaseDITest 提供
 
-        public UserServiceTest()
+        public UserServiceTest() : base()
         {
-            var services = new ServiceCollection();
-            services.AddSingleton(_userRepoMock.Object);
-            services.AddSingleton(_userInfoHelperMock.Object);
-            services.AddSingleton(_configMock.Object);
-            _serviceProvider = services.BuildServiceProvider();
+            // 如需額外 mock，於此註冊，勿重複注入 BaseDITest 已註冊的服務
         }
 
         [Fact]
@@ -158,8 +154,8 @@ namespace CoreApi.Test.Services
             var service = new UserService(_serviceProvider);
 
             var result = await service.GetUserTokenById(userId);
-            var apiResult = result as ApiResult;
-            Xunit.Assert.False(string.IsNullOrEmpty(apiResult?.Data as string));
+            var processResult = result as ProcessResult<GeneralResultStatusEnum, string>;
+            Xunit.Assert.False(string.IsNullOrEmpty(processResult?.Data));
         }
 
         [Fact]
@@ -170,9 +166,9 @@ namespace CoreApi.Test.Services
             var service = new UserService(_serviceProvider);
 
             var result = await service.GetUserTokenById(userId);
-            var apiResult = result as ApiResult;
-            Xunit.Assert.Null(apiResult?.Data);
-            Xunit.Assert.Equal(CoreApi.Common.Enums.GeneralResultStatusEnum.Fail.ToString(), apiResult?.Status);
+            var processResult = result as ProcessResult<GeneralResultStatusEnum, string>;
+            Xunit.Assert.Null(processResult?.Data);
+            Xunit.Assert.Equal(GeneralResultStatusEnum.Fail.ToString(), processResult?.Status);
         }
 
     }

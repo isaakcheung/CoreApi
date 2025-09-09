@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using CoreApi.Service;
 
 namespace CoreApi.Hangfire.Jobs
 {
@@ -9,12 +10,30 @@ namespace CoreApi.Hangfire.Jobs
     /// </summary>
     public class GetUserByKeywordJob
     {
+        /// <summary>
+        /// 任務識別名稱，供 Hangfire 註冊與管理
+        /// </summary>
         public const string JobId = "UserQueryJob";
-        public const string CronExpression = "*/20 * * * *"; // 每 20 分鐘
 
+        /// <summary>
+        /// Cron 排程表達式，每 20 分鐘執行一次
+        /// </summary>
+        public const string CronExpression = "*/20 * * * *";
+
+        /// <summary>
+        /// 延遲注入服務解析器
+        /// </summary>
         private readonly IServiceProvider _serviceProvider;
-        private CoreApi.Service.UserService? _userService => _serviceProvider.GetService(typeof(CoreApi.Service.UserService)) as CoreApi.Service.UserService;
 
+        /// <summary>
+        /// 延遲取得 UserService 實例
+        /// </summary>
+        private UserService? _userService => _serviceProvider.GetService(typeof(UserService)) as UserService;
+
+        /// <summary>
+        /// 建構式，注入 IServiceProvider
+        /// </summary>
+        /// <param name="serviceProvider">DI 容器服務提供者</param>
         public GetUserByKeywordJob(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
