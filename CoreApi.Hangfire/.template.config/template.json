@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "Hangfire", "Job", "Background", "Clean Architecture" ],
+  "identity": "IsaakCheung.CoreApi.Hangfire",
+  "name": "CoreApi Hangfire Template",
+  "shortName": "CoreApiHangfire",
+  "sourceName": "CoreApi.Hangfire",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000005" ],
+  "description": "Hangfire 排程任務專案範本，支援 Job、Scheduler、背景服務結構。",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.Hangfire.csproj" }
+  ],
+  "symbols": {
+    "projectName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi.Hangfire",
+      "defaultValue": "CoreApi.Hangfire",
+      "description": "Hangfire 專案名稱"
+    }
+  }
+}

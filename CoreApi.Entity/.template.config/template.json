@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "Entity", "EF Core", "Data", "Clean Architecture" ],
+  "identity": "IsaakCheung.CoreApi.Entity",
+  "name": "CoreApi Entity Template",
+  "shortName": "CoreApiEntity",
+  "sourceName": "CoreApi.Entity",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000004" ],
+  "description": "Entity 專案範本，定義 EF Core Entity、Mappings、Migrations 結構。",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.Entity.csproj" }
+  ],
+  "symbols": {
+    "projectName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi.Entity",
+      "defaultValue": "CoreApi.Entity",
+      "description": "Entity 專案名稱"
+    }
+  }
+}

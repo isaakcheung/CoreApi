@@ -57,7 +57,7 @@ namespace CoreApi.Service
         /// <summary>
         /// 依關鍵字查詢使用者資料
         /// </summary>
-        public async Task<IProcessResult> GetUserByKeyword(string? keyword = null, int? skip = null, int? take = null)
+        public async Task<IProcessResult> GetUserByKeyword(string? keyword, int? skip = null, int? take = null)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace CoreApi.Service
                 var signKey = _configuration?["JwtSettings:SignKey"] ?? "yourSignKey";
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(signKey));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-    
+
                 var token = new JwtSecurityToken(
                     issuer: issuer,
                     audience: audience,
@@ -174,7 +174,7 @@ namespace CoreApi.Service
                     expires: DateTime.Now.AddHours(1),
                     signingCredentials: creds
                 );
-    
+
                 var jwt = new JwtSecurityTokenHandler().WriteToken(token);
                 return GeneralProcessResultFactory.Success<string>(jwt);
             }
@@ -183,5 +183,6 @@ namespace CoreApi.Service
                 return GeneralProcessResultFactory.Fail(exception: ex);
             }
         }
+
     }
 }

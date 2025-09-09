@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "WebAPI", "API", "ASP.NET Core", "Clean Architecture" ],
+  "identity": "IsaakCheung.CoreApi.API",
+  "name": "CoreApi API Template",
+  "shortName": "CoreApiApi",
+  "sourceName": "CoreApi.API",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000002" ],
+  "description": "ASP.NET Core Web API 專案範本，支援 Clean Architecture 與多環境組態。",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.API.csproj" }
+  ],
+  "symbols": {
+    "projectName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi.API",
+      "defaultValue": "CoreApi.API",
+      "description": "API 專案名稱"
+    }
+  }
+}

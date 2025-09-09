@@ -39,10 +39,10 @@ namespace CoreApi.Repository.Repositories
         /// </summary>
         /// <param name="id">使用者唯一識別碼</param>
         /// <returns>UserEntity 物件</returns>
-        public async Task<UserEntity> GetByIdAsync(Guid id)
+        public async Task<UserEntity?> GetByIdAsync(Guid id)
         {
             // 使用唯讀DbContext查詢
-            return await _readOnlyDbContext.Users.FindAsync(id) ?? null;
+            return await _readOnlyDbContext.Users.FindAsync(id);
         }
 
         /// <summary>

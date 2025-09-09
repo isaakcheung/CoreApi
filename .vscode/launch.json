@@ -2,10 +2,9 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Local",
+      "name": "Debug Local by CoreApi.API",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "",
       "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
       "args": [],
       "cwd": "${workspaceFolder}/CoreApi.API",
@@ -14,10 +13,9 @@
       }
     },
     {
-      "name": "Debug Dev",
+      "name": "Debug Dev by CoreApi.API",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "",
       "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
       "args": [],
       "cwd": "${workspaceFolder}/CoreApi.API",
@@ -26,10 +24,9 @@
       }
     },
     {
-      "name": "Debug UAT",
+      "name": "Debug UAT by CoreApi.API",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "",
       "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
       "args": [],
       "cwd": "${workspaceFolder}/CoreApi.API",
@@ -38,13 +35,56 @@
       }
     },
     {
-      "name": "Debug Prod",
+      "name": "Debug Prod by CoreApi.API",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "",
       "program": "${workspaceFolder}/CoreApi.API/bin/Debug/net8.0/CoreApi.API.dll",
       "args": [],
       "cwd": "${workspaceFolder}/CoreApi.API",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Prod"
+      }
+    },
+    {
+      "name": "Debug Local by CoreApi.Hangfire",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Hangfire/bin/Debug/net8.0/CoreApi.Hangfire.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Hangfire",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      }
+    },
+    {
+      "name": "Debug Dev by CoreApi.Hangfire",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Hangfire/bin/Debug/net8.0/CoreApi.Hangfire.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Hangfire",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Dev"
+      }
+    },
+    {
+      "name": "Debug UAT by CoreApi.Hangfire",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Hangfire/bin/Debug/net8.0/CoreApi.Hangfire.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Hangfire",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "UAT"
+      }
+    },
+    {
+      "name": "Debug Prod by CoreApi.Hangfire",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Hangfire/bin/Debug/net8.0/CoreApi.Hangfire.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Hangfire",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Prod"
       }

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "Repository", "Data", "EF Core", "Clean Architecture" ],
+  "identity": "IsaakCheung.CoreApi.Repository",
+  "name": "CoreApi Repository Template",
+  "shortName": "CoreApiRepository",
+  "sourceName": "CoreApi.Repository",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000006" ],
+  "description": "Repository 專案範本，封裝資料存取邏輯，支援 EF Core 與 Dapper。",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.Repository.csproj" }
+  ],
+  "symbols": {
+    "projectName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi.Repository",
+      "defaultValue": "CoreApi.Repository",
+      "description": "Repository 專案名稱"
+    }
+  }
+}

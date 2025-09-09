@@ -26,7 +26,7 @@ namespace CoreApi.Repository.Interfaces
         /// </summary>
         /// <param name="id">使用者唯一識別碼</param>
         /// <returns>使用者資料物件</returns>
-        Task<UserEntity> GetByIdAsync(Guid id);
+        Task<UserEntity?> GetByIdAsync(Guid id);
 
         /// <summary>
         /// 新增使用者資料

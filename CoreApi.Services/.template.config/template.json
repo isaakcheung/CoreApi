@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "Service", "Business Logic", "Clean Architecture" ],
+  "identity": "IsaakCheung.CoreApi.Services",
+  "name": "CoreApi Services Template",
+  "shortName": "CoreApiServices",
+  "sourceName": "CoreApi.Services",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000007" ],
+  "description": "Service 專案範本，封裝商業邏輯與服務介面，支援 DDD 與 Clean Architecture。",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.Service.csproj" }
+  ],
+  "symbols": {
+    "projectName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi.Services",
+      "defaultValue": "CoreApi.Services",
+      "description": "Services 專案名稱"
+    }
+  }
+}

@@ -26,15 +26,7 @@ builder.Services.AddAuthorization();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddSingleton<IUserService, UserService>();
-builder.Services.AddSingleton<SqlConnectionHelper>();
-builder.Services.AddScoped<IUserInfoHelper, UserInfoHelper>();
-
-builder.Services.AddDbContext<ReadWriteCoreApiDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString(Constants.DbConnectionKeys.ReadWriteConnection)));
-builder.Services.AddDbContext<ReadOnlyCoreApiDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString(Constants.DbConnectionKeys.ReadOnlyConnection)));
-
+CoreApi.Service.Helper.ServiceStartUp.StartUp(builder.Services, builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -61,11 +53,6 @@ builder.Services.AddSwaggerGen(options =>
             new string[] {}
         }
     });
-});
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add<ProcessResultFilter>();
 });
 
 var app = builder.Build();

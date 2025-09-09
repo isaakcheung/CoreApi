@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "Common", "Library", "C#", "Clean Architecture" ],
+  "identity": "IsaakCheung.CoreApi.Common",
+  "name": "CoreApi Common Library Template",
+  "shortName": "CoreApiCommon",
+  "sourceName": "CoreApi.Common",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000003" ],
+  "description": "共用程式庫專案範本，提供 Enum、Helper、擴充方法等共用元件。",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.Common.csproj" }
+  ],
+  "symbols": {
+    "projectName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi.Common",
+      "defaultValue": "CoreApi.Common",
+      "description": "共用專案名稱"
+    }
+  }
+}

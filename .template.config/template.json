@@ -24,6 +24,7 @@
         "CoreApi.Repository/**",
         "CoreApi.Services/**",
         "CoreApi.Test/**",
+        "CoreApi.Hangfire/**",
         ".vscode/launch.json"
       ],
       "exclude": [
