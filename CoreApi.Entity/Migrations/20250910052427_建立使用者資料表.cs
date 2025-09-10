@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CoreApi.Entity.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateUserSchema : Migration
+    public partial class 建立使用者資料表 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

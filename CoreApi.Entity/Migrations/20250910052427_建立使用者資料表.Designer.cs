@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreApi.Entity.Migrations
 {
     [DbContext(typeof(ReadWriteCoreApiDbContext))]
-    [Migration("20250907131018_UpdateUserSchema")]
-    partial class UpdateUserSchema
+    [Migration("20250910052427_建立使用者資料表")]
+    partial class 建立使用者資料表
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
