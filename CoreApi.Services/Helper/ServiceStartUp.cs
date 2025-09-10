@@ -23,6 +23,7 @@ namespace CoreApi.Service.Helper
             services.AddScoped<IUserService, UserService>();
 
             // Repository/Helper
+            services.AddScoped<CoreApi.Repository.Interfaces.IUserRepository, CoreApi.Repository.Repositories.UserRepository>();
             services.AddSingleton<SqlConnectionHelper>();
             services.AddScoped<IUserInfoHelper, UserInfoHelper>();
 
