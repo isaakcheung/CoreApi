@@ -25,7 +25,9 @@
         "CoreApi.Services/**",
         "CoreApi.Test/**",
         "CoreApi.Hangfire/**",
-        ".vscode/launch.json"
+        "CoreApi.Vue/**",
+        ".vscode/launch.json",
+        ".vscode/tasks.json"
       ],
       "exclude": [
         "**/bin/**",
