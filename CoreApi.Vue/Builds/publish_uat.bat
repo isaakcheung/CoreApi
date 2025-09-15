@@ -1,0 +1,1 @@
+cd clientapps & npm run build & cd .. & dotnet publish /p:Configuration=UAT /p:PublishProfile=UATPublish /p:PublishReadyToRunShowWarnings=false

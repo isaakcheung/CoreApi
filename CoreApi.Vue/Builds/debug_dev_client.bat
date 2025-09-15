@@ -1,0 +1,1 @@
+ cd .. & cd clientapps & npm run watch 

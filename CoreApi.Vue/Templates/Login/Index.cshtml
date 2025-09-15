@@ -1,0 +1,34 @@
+﻿@model dynamic
+@{
+    Layout = null;
+    ViewData["Title"] = "products Page";
+    var seoAttribute = SeoAttribute.GetSEOFilter(this.ViewContext.ActionDescriptor.FilterDescriptors);
+}
+<html lang="en">
+
+@if (seoAttribute.IsScraper)
+    @Html.Raw(seoAttribute.SeoHead)
+else
+{
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+        <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+        <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+        @Html.Raw(seoAttribute.Head)
+        <title>Welcome to ChicTrip</title>
+    </head>
+}
+
+<body>
+    @if (seoAttribute.IsScraper)
+        @Html.Raw(seoAttribute.Body)
+
+    <div id="app"></div>
+    <script type="module" src="/src/pages/login/login.ts"></script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+cd clientapps & npm run build & cd .. & dotnet publish CoreApi.Vuetify.csproj /p:Configuration=Dev /p:PublishProfile=DevPublish /p:WarningLevel=1;

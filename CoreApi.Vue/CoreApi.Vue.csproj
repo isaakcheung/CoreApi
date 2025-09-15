@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Local;Uat;Prod;Dev</Configurations>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <!-- extends watching group to include *.js files -->
+    <Watch Include="views\**\*;wwwroot\**\*;" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="SeoTemplates\Login\Profile\**" />
+    <Content Remove="SeoTemplates\Login\Profile\**" />
+    <EmbeddedResource Remove="SeoTemplates\Login\Profile\**" />
+    <None Remove="SeoTemplates\Login\Profile\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="clientApps\operation\controllers\mpapageController.cs.temp" />
+    <None Remove="clientApps\operation\views\Index.cshtml.temp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\ProdPublish.pubxml" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\UatPublish.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="clientApps\operation\controllers\mpapageController.cs.temp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".template.config\template.json" />
+    <Content Include="clientApps\operation\views\Index.cshtml.temp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Razor.Templating.Core" Version="1.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="clientApps\src\pages\" />
+    <Folder Include="clientApps\templates\" />
+    <Folder Include="clientApps\views\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\templates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="clientApps\public\seodata\seo_login.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="clientApps\public\seodata\seo_products.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="clientApps\public\seodata\seo_products_123456.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+
+</Project>

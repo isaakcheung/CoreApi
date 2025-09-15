@@ -1,0 +1,19 @@
+{
+  "alias": {
+    "@/*": "src\\*",
+    "@plugins/*": "src\\plugins\\*",
+    "@components/*": "src\\components\\*",
+    "@pages/*": "src\\pages\\*",
+    "@assets/*": "src\\assets\\*",
+    "@themeConfig/*": "src\\themeConfig\\*"
+  },
+  "resolveExtensions": [
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx",
+    ".vue",
+    ".scss",
+    ".less"
+  ]
+}

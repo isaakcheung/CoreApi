@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "IsaakCheung",
+  "classifications": [ "Web", "Vue", "ASP.NET Core", "Clean Architecture" ],
+  "identity": "IsaakCheung.CoreApi.Vue",
+  "name": "CoreApi Vue Template",
+  "shortName": "CoreApiVue",
+  "sourceName": "CoreApi.Vue",
+  "guids": [ "d1e1a7e2-0000-0000-0000-000000000003" ],
+  "description": "ASP.NET Core MVC + Vue3 專案範本，支援 Clean Architecture 與多環境組態。",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/bin/**",
+        "**/obj/**",
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "CoreApi.Vue.csproj" }
+  ],
+  "symbols": {
+    "projectName": {
+      "type": "parameter",
+      "datatype": "text",
+      "replaces": "CoreApi.Vue",
+      "defaultValue": "CoreApi.Vue",
+      "description": "Vue 專案名稱"
+    }
+  }
+}

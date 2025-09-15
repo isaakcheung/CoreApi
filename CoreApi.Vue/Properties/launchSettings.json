@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "CoreApi.Vuetify": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "$(Configuration)"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7126;http://localhost:5126"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:28154",
+      "sslPort": 44341
+    }
+  }
+}

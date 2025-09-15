@@ -1,0 +1,1 @@
+cd clientapps & npm run build & cd .. & dotnet publish /p:Configuration=Prod /p:PublishProfile=ProdPublish

@@ -134,7 +134,7 @@ namespace CoreApi.Service
             {
                 var entity = await _userRepository.GetByIdAsync(id);
                 if (entity == null)
-                    return GeneralProcessResultFactory.Success<bool>(false);
+                    throw new ArgumentException("查無資料");
 
                 entity.IsActive = false;
                 // 強制更新 UpdateTime 與 UpdateBy

@@ -1,0 +1,20 @@
+// Composables
+
+import { createRouter, createWebHistory } from 'vue-router'
+
+const routes = [
+  {
+    path: '/mpapage',
+    component: () => import(/* webpackChunkName: "mpapage" */ '@components/mpapage/contents/mpapage.vue')
+  },
+]
+
+// const router = createRouter({
+//  history: createWebHistory(process.env.BASE_URL),
+//  routes,
+// })
+
+export default createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+})

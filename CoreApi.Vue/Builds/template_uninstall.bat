@@ -1,0 +1,1 @@
+cd .. & dotnet new --uninstall .\

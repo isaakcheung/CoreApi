@@ -1,0 +1,26 @@
+﻿using CoreApi.Vuetify.Helpers;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Nodes;
+
+namespace CoreApi.Vuetify.Controllers
+{
+    public class mpapageController : Controller
+    {
+        private readonly ILogger<mpapageController> _logger;
+
+        public mpapageController(ILogger<mpapageController> logger)
+        {
+            _logger = logger;
+        }
+
+        [Route("/mpapage"), Seo()]
+        public async Task<IActionResult> mpapage()
+        {
+            return View("Views/mpapage/Index.cshtml");
+        }
+
+    }
+}
