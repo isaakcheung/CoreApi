@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "watch CoreApi.Hangfire Local",
+      "type": "shell",
+      "command": "dotnet watch --project ./CoreApi.Hangfire/CoreApi.Hangfire.csproj run --configuration Local",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build CoreApi.Hangfire Dev",
+      "type": "shell",
+      "command": "dotnet build ./CoreApi.Hangfire/CoreApi.Hangfire.csproj --configuration Dev",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build CoreApi.Hangfire UAT",
+      "type": "shell",
+      "command": "dotnet build ./CoreApi.Hangfire/CoreApi.Hangfire.csproj --configuration UAT",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build CoreApi.Hangfire Prod",
+      "type": "shell",
+      "command": "dotnet build ./CoreApi.Hangfire/CoreApi.Hangfire.csproj --configuration Prod",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

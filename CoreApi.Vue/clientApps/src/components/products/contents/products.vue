@@ -23,7 +23,7 @@
                     size="large"
                     start />
 
-            Components 123456---123
+            Components 123456---1233
           </v-btn>
         </v-col>
 

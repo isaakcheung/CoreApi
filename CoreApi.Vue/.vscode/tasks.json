@@ -1,0 +1,181 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "watch CoreApi.Vue Local",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "watch"],
+      "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/clientApps" },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          { "regexp": ".+", "file": 1, "location": 2, "message": 3 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "watch(ing)?|compiled successfully|ready in .*|Built in .*"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Npm Watch Local by CoreApi.Vue",
+      "type": "shell",
+      "command": "npm run watch-local",
+      "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/clientApps" },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          { "regexp": ".+", "file": 1, "location": 2, "message": 3 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "output copy done"
+        }
+      }
+    },
+    {
+      "label": "Dotnet Watch Local by CoreApi.Vue",
+      "type": "shell",
+      "isBackground": true,
+      "command": "dotnet watch --project ./CoreApi.Vue/CoreApi.Vue.csproj run --configuration Local",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Prelaunch Sequence Local by CoreApi.Vue",
+      "dependsOn": ["Npm Watch Local by CoreApi.Vue", "Dotnet Watch Local by CoreApi.Vue"],
+      "group": "build",
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Npm Watch Dev by CoreApi.Vue",
+      "type": "shell",
+      "command": "npm run watch-dev",
+      "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/clientApps" },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          { "regexp": ".+", "file": 1, "location": 2, "message": 3 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "output copy done"
+        }
+      }
+    },
+    {
+      "label": "Dotnet Watch Dev by CoreApi.Vue",
+      "type": "shell",
+      "isBackground": true,
+      "command": "dotnet watch --project ./CoreApi.Vue/CoreApi.Vue.csproj run --configuration Dev",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Prelaunch Sequence Dev by CoreApi.Vue",
+      "dependsOn": ["Npm Watch Dev by CoreApi.Vue", "Dotnet Watch Dev by CoreApi.Vue"],
+      "group": "build",
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Npm Watch UAT by CoreApi.Vue",
+      "type": "shell",
+      "command": "npm run watch-uat",
+      "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/clientApps" },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          { "regexp": ".+", "file": 1, "location": 2, "message": 3 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "output copy done"
+        }
+      }
+    },
+    {
+      "label": "Dotnet Watch UAT by CoreApi.Vue",
+      "type": "shell",
+      "isBackground": true,
+      "command": "dotnet watch --project ./CoreApi.Vue/CoreApi.Vue.csproj run --configuration UAT",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Prelaunch Sequence UAT by CoreApi.Vue",
+      "dependsOn": ["Npm Watch UAT by CoreApi.Vue", "Dotnet Watch UAT by CoreApi.Vue"],
+      "group": "build",
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Npm Watch Prod by CoreApi.Vue",
+      "type": "shell",
+      "command": "npm run watch-prod",
+      "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/clientApps" },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          { "regexp": ".+", "file": 1, "location": 2, "message": 3 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "output copy done"
+        }
+      }
+    },
+    {
+      "label": "Dotnet Watch Prod by CoreApi.Vue",
+      "type": "shell",
+      "isBackground": true,
+      "command": "dotnet watch --project ./CoreApi.Vue/CoreApi.Vue.csproj run --configuration Prod",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Prelaunch Sequence Prod by CoreApi.Vue",
+      "dependsOn": ["Npm Watch Prod by CoreApi.Vue", "Dotnet Watch Prod by CoreApi.Vue"],
+      "group": "build",
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Add SPA for Client",
+      "type": "shell",
+      "command": "node",
+      "args": ["app.js","add", "${input:appName}"],
+      "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/Builds" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Remove SPA for Client",
+      "type": "shell",
+      "command": "node",
+      "args": ["app.js","remove", "${input:appName}"],
+      "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/Builds" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Install NPM for Vue ClientApps & Builds",
+      "type": "shell",
+      "command": "npm install --prefix ./CoreApi.Vue/clientApps && npm install --prefix ./CoreApi.Vue/Builds",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "appName",
+      "type": "promptString",
+      "description": "請輸入需要新增的 SPA 名稱 (首字大寫)",
+      "default": "--configuration Debug"
+    }
+  ]
+}

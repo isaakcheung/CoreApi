@@ -1,0 +1,77 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Local by CoreApi.Vue",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Vue/bin/Local/net8.0/CoreApi.Vue.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Vue",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      },
+      "preLaunchTask": "Prelaunch Sequence Local by CoreApi.Vue"
+    },
+    {
+      "name": "Debug Dev by CoreApi.Vue",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Vue/bin/Dev/net8.0/CoreApi.Vue.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Vue",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Dev"
+      },
+      "preLaunchTask": "Prelaunch Sequence Dev by CoreApi.Vue"
+    },
+    {
+      "name": "Debug UAT by CoreApi.Vue",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Vue/bin/UAT/net8.0/CoreApi.Vue.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Vue",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "UAT"
+      },
+      "preLaunchTask": "Prelaunch Sequence UAT by CoreApi.Vue"
+    },
+    {
+      "name": "Debug Prod by CoreApi.Vue",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/CoreApi.Vue/bin/Prod/net8.0/CoreApi.Vue.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CoreApi.Vue",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Prod"
+      },
+      "preLaunchTask": "Prelaunch Sequence Prod by CoreApi.Vue"
+    }
+  ]
+}

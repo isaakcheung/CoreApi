@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "watch CoreApi.API Local",
+      "type": "shell",
+      "command": "dotnet watch --project ./CoreApi.API/CoreApi.API.csproj run --configuration Local",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build CoreApi.API Dev",
+      "type": "shell",
+      "command": "dotnet build ./CoreApi.API/CoreApi.API.csproj --configuration Dev",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build CoreApi.API UAT",
+      "type": "shell",
+      "command": "dotnet build ./CoreApi.API/CoreApi.API.csproj --configuration UAT",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build CoreApi.API Prod",
+      "type": "shell",
+      "command": "dotnet build ./CoreApi.API/CoreApi.API.csproj --configuration Prod",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
