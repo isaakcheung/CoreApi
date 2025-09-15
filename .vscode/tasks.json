@@ -217,7 +217,14 @@
       "options": { "cwd": "${workspaceFolder}/CoreApi.Vue/Builds" },
       "problemMatcher": [],
       "presentation": { "reveal": "always", "panel": "dedicated" }
-    }
+    },
+    {
+      "label": "Install NPM for Vue ClientApps & Builds",
+      "type": "shell",
+      "command": "npm install --prefix ./CoreApi.Vue/clientApps && npm install --prefix ./CoreApi.Vue/Builds",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
   ],
   "inputs": [
     {
